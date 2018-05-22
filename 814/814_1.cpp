@@ -12,11 +12,11 @@ struct TreeNode {
 class Solution {
 public:
     TreeNode* pruneTree(TreeNode* root) {
-        if(root->left!=NULL)
-            root->left=pruneTree(root->left);
-        if(root->right!=NULL)
-            root->right=pruneTree(root->right);
-        if(root->left==NULL&&root->right==NULL&&root->val==0)
+    	if(!root)
+    		return NULL;
+        root->left=pruneTree(root->left);
+        root->right=pruneTree(root->right);
+        if(!root->left&&!root->right&&!root->val)
             return NULL;
         else
             return root;
