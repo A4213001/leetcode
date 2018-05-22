@@ -1,3 +1,7 @@
+#include<string>
+#include<sstream>
+using namespace std;
+
 class Solution {
     struct complex{
         int x,y;
@@ -5,20 +9,18 @@ class Solution {
     };
 public:
     string complexNumberMultiply(string a, string b) {
-        int xIndex,yIndex;
+        int xIndex;
         int x,y;
         stringstream ss;
         for(int i=0;i<a.length();i++){
             if(a[i]=='+')
                 xIndex=i;
-            if(a[i]=='i')
-                yIndex=i;
         }
         for(int i=0;i<xIndex;i++)
             ss<<a[i];
         ss>>x;
         ss.clear();
-        for(int i=xIndex+1;i<yIndex;i++)
+        for(int i=xIndex+1;i<a.length()-1;i++)
             ss<<a[i];
         ss>>y;
         ss.clear();
@@ -27,14 +29,12 @@ public:
         for(int i=0;i<b.length();i++){
             if(b[i]=='+')
                 xIndex=i;
-            if(b[i]=='i')
-                yIndex=i;
         }
         for(int i=0;i<xIndex;i++)
             ss<<b[i];
         ss>>x;
         ss.clear();
-        for(int i=xIndex+1;i<yIndex;i++)
+        for(int i=xIndex+1;i<b.length()-1;i++)
             ss<<b[i];
         ss>>y;
         ss.clear();
