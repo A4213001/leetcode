@@ -5,24 +5,22 @@ class Solution {
 public:
     vector<int> selfDividingNumbers(int left, int right) {
         vector<int> ans;
-        int copy,num;
-        bool tf;
         for(int i=left;i<=right;i++){
-            copy=i;
-            tf=1;
+            int copy=i;
+            bool valid=1;
             while(copy){
-                num=copy%10;
+                int num=copy%10;
                 if(num){    
                     if(i%num)
-                        tf=0;
+                        valid=false;
                     copy/=10;
                 }
                 else{
-                    tf=0;
+                    valid=0;
                     break;
                 }
             }
-            if(tf)
+            if(valid)
                 ans.push_back(i);
         }
         return ans;
